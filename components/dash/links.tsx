@@ -20,7 +20,14 @@ export default async function Links({
       <div className="w-full">
         {userLinks.length > 0 ? (
           userLinks.map((link) => (
-            <Link link={link} key={link.id} />
+            <Link
+              link={{
+                ...link,
+                createdAt: link.createdAt.toISOString(),
+                updatedAt: link.updatedAt.toISOString(),
+              }}
+              key={link.id}
+            />
           ))
         ) : (
           <p className="text-gray-500">No links found.</p>
